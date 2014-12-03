@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''
+SECRET_KEY = '3j+pz#(fngr*fr5scdc$x*9pmp0fi!ek&@ttw6cc06!g#kkb&d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -26,20 +26,22 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
 INSTALLED_APPS = (
-   'django.contrib.admin',
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    'django.contrib.sitemaps',
+    'django.contrib.sites',	
     'blog',
     'django_markdown',
-)
+    )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -49,12 +51,19 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
-)
+    )
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+    )
+
 
 ROOT_URLCONF = 'cattomato.urls'
 
 WSGI_APPLICATION = 'cattomato.wsgi.application'
+
+LOGIN_REDIRECT_URL = '/'
 
 
 # Database
@@ -62,10 +71,10 @@ WSGI_APPLICATION = 'cattomato.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    'ENGINE': 'django.db.backends.sqlite3',
+    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
-}
+    }
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
@@ -85,5 +94,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, "templates"), )
+
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"), )

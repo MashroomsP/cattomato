@@ -35,7 +35,14 @@
         </nav>
       </div>
     </div>
-
+<div>
+      {{ user }}
+      {% if user.is_anonymous %}
+      <a href="{% url 'django.contrib.auth.views.login' %}">login</a>
+      {% else %}
+      <a href="{% url 'django.contrib.auth.views.logout' %}">logout</a>
+      {% endif %}
+    </div>
     <div class="container">
 
       <div class="blog-header">
